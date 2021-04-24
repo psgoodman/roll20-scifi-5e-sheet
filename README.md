@@ -1,8 +1,10 @@
 # Compiling
 ## Required installs
 npm (javascript package manager)
+
     apt install npm
 pug (html template engine)
+
     npm i -g pug-cli
 ## Compile instructions
     ./compile.sh
