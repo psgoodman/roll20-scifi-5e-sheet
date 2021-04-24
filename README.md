@@ -6,6 +6,9 @@ npm (javascript package manager)
 pug (html template engine)
 
     npm i -g pug-cli
+sassy css (css extension language)
+
+    npm install -g sass
 ## Compile instructions
     ./compile.sh
 
