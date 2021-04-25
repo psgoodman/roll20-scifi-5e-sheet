@@ -596,7 +596,7 @@
             subsection = subsection ? subsection : element
             _.each(proficiencyList, function(prof) {
                 if(data[prof + " Proficiency"]) {
-                    addRepeatingSection(subsection, "row", function(rowid) {
+                    addRepeatingSection(subsection, "cRow", function(rowid) {
                         var json = JSON.parse(data[prof + " Proficiency"]);
                         if(!json.Hidden) {
                             var repupdate = {};
@@ -646,7 +646,7 @@
                 }
             });
             if(data.Expertise) {
-                addRepeatingSection(subsection, "row", function(rowid) {
+                addRepeatingSection(subsection, "cRow", function(rowid) {
                     var json = JSON.parse(data.Expertise);
                     if(json.Title) {
                         var repupdate = {};
@@ -684,7 +684,7 @@
                     addRepeatingSection(subsection, "utilityrow", function(rowid) {
                         let repupdate = {};
                         let set = {};
-                        repupdate[`${rowid} label span .sheet-title`] = trait.Name.split("{{")[0];
+                        repupdate[`${rowid} label span .title`] = trait.Name.split("{{")[0];
                         if(!trait.Hide) repupdate[`${rowid} label p`] = trait.Desc;
                         repupdate[`${rowid} button`] = trait["Input Spells"].ButtonText;
                         set[`${rowid}_info`] = JSON.stringify(trait["Input Spells"]);
@@ -697,7 +697,7 @@
                         setAttrs(set);
                     });
                 } else if(!trait.Hide) {
-                    addRepeatingSection(subsection, "row", function(rowid) {
+                    addRepeatingSection(subsection, "cRow", function(rowid) {
                         let repupdate = {};
                         if(trait.Input) {
                             //Fixing custom data in inputs not being remembered when switching tabs (UC809)
@@ -763,7 +763,7 @@
 
         handleProficiencies(sorted.proficiencies);
         _.each(sorted.choices, function(blob, name) {
-            addRepeatingSection(element, "row", function(rowid) {
+            addRepeatingSection(element, "cRow", function(rowid) {
                 var title = blob.Title ? blob.Title : name;
                 var choice = blob.Choice;
                 var settings = {};
@@ -807,7 +807,7 @@
             });
         });
         _.each(sorted.spells, function(blob, name) {
-            addRepeatingSection(element, "row", function(rowid) {
+            addRepeatingSection(element, "cRow", function(rowid) {
                 let title = blob.Title ? blob.Title : name;
                 let spells = JSON.parse(blob["Pick Spells"]);
                 let settings = {};
@@ -841,7 +841,7 @@
         });
         _.each(sorted.other, function(blob, name) {
             if(blob.Title || blob.Description) {
-                addRepeatingSection(element, "row", function(rowid) {
+                addRepeatingSection(element, "cRow", function(rowid) {
                     var title = blob.Title ? blob.Title : name;
                     var repupdate = {};
                     repupdate[rowid + " label span"] = "" + title;
@@ -858,7 +858,7 @@
             var traitsObj = JSON.parse(blob.Traits);
             var title = blob.Title ? blob.Title : name;
             if(blob.Description || traitsObj.length > 1) {
-                addRepeatingSection(element, "row", function(rowid) {
+                addRepeatingSection(element, "cRow", function(rowid) {
                     if(blob.Description || blob.Title) {
                         var repupdate = {};
                         repupdate[rowid + " label span"] = "" + title;
@@ -912,7 +912,7 @@
             profs.push({type: "", choice: ""});
             total ++;
         }
-        addRepeatingSection(lower + "_holder", "row", "customrow", function(rowid) {
+        addRepeatingSection(lower + "_holder", "cRow", "customrow", function(rowid) {
             var toset = {};
             toset[rowid + " label span"] = "Proficiencies";
             repids.push(rowid);
@@ -929,7 +929,7 @@
                 });
             });
         });
-        addRepeatingSection(lower + "_holder", "row", "customrow", function(rowid) {
+        addRepeatingSection(lower + "_holder", "cRow", "customrow", function(rowid) {
             var toset = {};
             toset[rowid + " label span"] = "Custom " + section + " Features";
             repids.push(rowid);
@@ -1100,7 +1100,7 @@
     on("mancerchange:race", function(eventinfo) {
         var mancerdata = getCharmancerData();
         getProficiencies(mancerdata, eventinfo.currentStep);
-        changeCompendiumPage("sheet-race-info", eventinfo.newValue);
+        changeCompendiumPage("race-info", eventinfo.newValue);
         hideChoices();
 
         var reset = {};
@@ -1201,7 +1201,7 @@
     on("mancerchange:subrace", function(eventinfo) {
         var mancerdata = getCharmancerData();
         getProficiencies(mancerdata, eventinfo.currentStep);
-        changeCompendiumPage("sheet-race-info", eventinfo.newValue);
+        changeCompendiumPage("race-info", eventinfo.newValue);
 
         var initHide = ["subrace_possible", "custom_trait_2", "custom_trait_3", "custom_trait_4"];
         var reset = {};
@@ -1278,7 +1278,7 @@
     on("mancerchange:class", function(eventinfo) {
         var mancerdata = getCharmancerData();
         getProficiencies(mancerdata, eventinfo.currentStep);
-        changeCompendiumPage("sheet-class-info", eventinfo.newValue);
+        changeCompendiumPage("class-info", eventinfo.newValue);
         hideChoices();
 
         var initHide = ["class_possible", "subclass_choices"];
@@ -1379,7 +1379,7 @@
     on("mancerchange:subclass", function(eventinfo) {
         var mancerdata = getCharmancerData();
         getProficiencies(mancerdata, eventinfo.currentStep);
-        changeCompendiumPage("sheet-class-info", eventinfo.newValue);
+        changeCompendiumPage("class-info", eventinfo.newValue);
 
         var initHide = ["subclass_possible"];
         var reset = {};
@@ -1443,7 +1443,7 @@
     on("mancerchange:background", function(eventinfo) {
         var mancerdata = getCharmancerData();
         getProficiencies(mancerdata, eventinfo.currentStep);
-        changeCompendiumPage("sheet-background-info", eventinfo.newValue);
+        changeCompendiumPage("background-info", eventinfo.newValue);
 
         var initHide = ["background_possible", "custom_background"];
         var reset = {};
@@ -2013,7 +2013,7 @@
 
     on("mancerchange:repeating_spellrow", function(eventinfo) {
         if(eventinfo.sourceType == "player") {
-            changeCompendiumPage("sheet-spells-info", eventinfo.newValue, "card_only");
+            changeCompendiumPage("spells-info", eventinfo.newValue, "card_only");
         }
         var mancerdata = getCharmancerData();
         var known = knownSpells().known;
@@ -2087,7 +2087,7 @@
             spell_name = data["l1-spells"].values[eventinfo.sourceSection + "_choice"] ? data["l1-spells"].values[eventinfo.sourceSection + "_choice"] : "Rules:Spells";
             card = data["l1-spells"].values[eventinfo.sourceSection + "_choice"] ? card : "";
         }
-        changeCompendiumPage("sheet-spells-info", spell_name, card);
+        changeCompendiumPage("spells-info", spell_name, card);
     });
 
     on("mancerchange:repeating_customrow", function(eventinfo) {
@@ -2203,7 +2203,7 @@
         }
         getAttrs(["licensedsheet"], function(v) {
             if("licensedsheet" in v && v.licensedsheet === "1") {
-                setCharmancerText({"sheet-licensedsheet-flag":"true"}); 
+                setCharmancerText({"licensedsheet-flag":"true"}); 
             }
         });
     });
@@ -2345,7 +2345,7 @@
             });
             _.each(sorted, function(spellarray, level) {
                 _.each(spellarray, function(spells, section) {
-                    addRepeatingSection("spell_holder", "row", "spellrow", function(rowid) {
+                    addRepeatingSection("spell_holder", "cRow", "spellrow", function(rowid) {
                         var repupdate = {};
                         var knownspells = [];
                         var toset = {};
@@ -2415,7 +2415,7 @@
     });
 
     on("mancerchange:feat", function(eventinfo) {
-        changeCompendiumPage("sheet-feat-info", eventinfo.newValue);
+        changeCompendiumPage("feat-info", eventinfo.newValue);
 
         var reset = {};
         if(!(eventinfo.newValue === "" || eventinfo.newValue === undefined)) {
@@ -2502,7 +2502,7 @@
 
         if (mancerdata["l1-race"] != undefined) {
              const raceInfo = mancerdata["l1-race"].values.race;
-             changeCompendiumPage("sheet-race-info", raceInfo);
+             changeCompendiumPage("race-info", raceInfo);
         };
     });
 
@@ -2544,7 +2544,7 @@
                         if(page.values[id + "_choice"]) {
                             warnings += '<p>Your ' + featurename + ' is ' + _.last(page.values[id + "_choice"].split(":")) + '.</p>'
                         } else {
-                            warnings += '<p class="sheet-warning">Your have not chosen a ' + featurename + '.</p>';
+                            warnings += '<p class="warning">Your have not chosen a ' + featurename + '.</p>';
                         };
                     }
                 });
@@ -2559,11 +2559,11 @@
                                 numChoices--;
                                 var thischoice = _.last(page.values[id + "_choice"].split(":"));
                                 if(thischoice == "custom" && !page.values[id + "_choice"]) {
-                                    warnings += '<p class="sheet-warning">You\'ve chosen a custom language, but you haven\'t entered a custom language name.</p>';
+                                    warnings += '<p class="warning">You\'ve chosen a custom language, but you haven\'t entered a custom language name.</p>';
                                 }
                                 _.each(profdata.auto, function(profs, source) {
                                     if(profs.includes(thischoice)) {
-                                        warnings += '<p class="sheet-warning">You\'ve chosen the ' + prof.toLowerCase() + ' ' + thischoice;
+                                        warnings += '<p class="warning">You\'ve chosen the ' + prof.toLowerCase() + ' ' + thischoice;
                                         warnings += ', but you already have that ' + prof.toLowerCase() + ' from your ' + source + '.</p>';
                                     };
                                 });
@@ -2588,7 +2588,7 @@
                 if(type == "ability") {
                     type = 'ability score increase'
                 }
-                warnings += '<p class="sheet-warning">Your ' + sectionName;
+                warnings += '<p class="warning">Your ' + sectionName;
                 if(type == "expertise") {
                     warnings += " gives you expertise in ";
                     warnings += number[0] > 1 ? 'up to ' + number[0] + ' skills' : " a skill";
@@ -2637,7 +2637,7 @@
 
                 if (mancerdata["l1-bio"].values.previous_race != racename) {
                     setCharmancerText({
-                        race_warning: '<p class="sheet-warning">Each race has unique look and different names. You might want to adjust your choices to reflect your race.</p>'
+                        race_warning: '<p class="warning">Each race has unique look and different names. You might want to adjust your choices to reflect your race.</p>'
                     });
                 };
             };
@@ -2645,7 +2645,7 @@
 
         if(mancerdata["l1-race"] && racename) {
             set["race_info"] = '<p>Your race is ' + racename + '</p>';
-            if(!mancerdata["l1-race"].values.alignment) set["race_info"] += '<p class="sheet-warning">You haven\'t chosen your alignment.</p>';
+            if(!mancerdata["l1-race"].values.alignment) set["race_info"] += '<p class="warning">You haven\'t chosen your alignment.</p>';
             set["race_info"] += handleMissing("race");
             if(mancerdata["l1-race"].values["has_subrace"] == "true") {
                 if(subracename) {
@@ -2653,9 +2653,9 @@
                     set["race_info"] += handleMissing("subrace");
                 } else {
                     if(mancerdata["l1-race"].values.subrace == "Rules:Races" && !mancerdata["l1-race"].values.subrace_name) {
-                        set["race_info"] = '<p class="sheet-warning sheet-needed">You need to pick a name for your custom subrace!</p>';
+                        set["race_info"] = '<p class="warning needed">You need to pick a name for your custom subrace!</p>';
                     } else {
-                        set["race_info"] += '<p class="sheet-warning sheet-needed">You have not selected a subrace!</p>';
+                        set["race_info"] += '<p class="warning needed">You have not selected a subrace!</p>';
                     }
                     ready = false;
                     showChoices(["race_button"]);
@@ -2664,7 +2664,7 @@
             _.each(spelldata.errors.race, function(error) {
                 switch(error) {
                     case "custom_race_spell_list":
-                        set["race_info"] += '<p class="sheet-warning sheet-needed">You have not selected spell list for your innate spellcasting!</p>';
+                        set["race_info"] += '<p class="warning needed">You have not selected spell list for your innate spellcasting!</p>';
                         ready = false;
                         break;
                     default:
@@ -2672,14 +2672,14 @@
                 }
             });
             if(mancerdata["l1-race"].values.race == "Rules:Races") {
-                if(!mancerdata["l1-race"].values.size) set["race_info"] += '<p class="sheet-warning">You have not selected a size for your custom race!</p>';
-                if(!mancerdata["l1-race"].values.speed) set["race_info"] += '<p class="sheet-warning">You have not selected a walking speed for your custom race!</p>';
+                if(!mancerdata["l1-race"].values.size) set["race_info"] += '<p class="warning">You have not selected a size for your custom race!</p>';
+                if(!mancerdata["l1-race"].values.speed) set["race_info"] += '<p class="warning">You have not selected a walking speed for your custom race!</p>';
             }
         } else {
             if(mancerdata["l1-race"] && mancerdata["l1-race"].values.race == "Rules:Races" && !mancerdata["l1-race"].values.race_name) {
-                set["race_info"] = '<p class="sheet-warning sheet-needed">You need to pick a name for your custom race!</p>';
+                set["race_info"] = '<p class="warning needed">You need to pick a name for your custom race!</p>';
             } else {
-                set["race_info"] = '<p class="sheet-warning sheet-needed">You have not selected a race!</p>';
+                set["race_info"] = '<p class="warning needed">You have not selected a race!</p>';
             }
             ready = false;
             showChoices(["race_button"]);
@@ -2689,7 +2689,7 @@
             set["class_info"] = '<p>Your class is ' + classname + '.</p>';
             set["class_info"] += handleMissing("class");
             if(mancerdata["l1-class"].values.race == "Rules:Classes" && !mancerdata["l1-class"].values.custom_hit_die) {
-                set["class_info"] = '<p class="sheet-warning">You need to pick a hit die for your custom class!</p>';
+                set["class_info"] = '<p class="warning">You need to pick a hit die for your custom class!</p>';
             }
             if(mancerdata["l1-class"].data.class && mancerdata["l1-class"].data.class["data-Subclass Level"] == 1) {
                 if(subclassname && mancerdata["l1-class"].data.class && mancerdata["l1-class"].data.class["data-Subclass Level"] == 1) {
@@ -2697,9 +2697,9 @@
                     set["class_info"] += handleMissing("subclass", mancerdata["l1-class"].data.class["Subclass Name"]);
                 } else {
                     if(mancerdata["l1-class"].values.subclass == "Rules:Classes" && !mancerdata["l1-class"].values.subrace_name) {
-                        set["class_info"] = '<p class="sheet-warning sheet-needed">You need to pick a name for your custom ' + mancerdata["l1-class"].data.class["Subclass Name"] + '!</p>';
+                        set["class_info"] = '<p class="warning needed">You need to pick a name for your custom ' + mancerdata["l1-class"].data.class["Subclass Name"] + '!</p>';
                     } else {
-                        set["class_info"] += '<p class="sheet-warning sheet-needed">You have not selected a ' + mancerdata["l1-class"].data.class["Subclass Name"] + '!</p>';
+                        set["class_info"] += '<p class="warning needed">You have not selected a ' + mancerdata["l1-class"].data.class["Subclass Name"] + '!</p>';
                     }
                     ready = false;
                     showChoices(["class_button"]);
@@ -2708,12 +2708,12 @@
             _.each(spelldata.errors.class, function(error) {
                 switch(error) {
                     case "custom_class_spell_list":
-                        set["race_info"] += '<p class="sheet-warning sheet-needed">You have selected a spellcasting ability for your custom class, but you have not selected a spell list.</p>';
+                        set["race_info"] += '<p class="warning needed">You have selected a spellcasting ability for your custom class, but you have not selected a spell list.</p>';
                         ready = false;
                         showChoices(["class_button"]);
                         break;
                     case "custom_class_spell_number":
-                        set["race_info"] += '<p class="sheet-warning sheet-needed">You have selected a spellcasting ability for your custom class, but you have not selected a number of spells.</p>';
+                        set["race_info"] += '<p class="warning needed">You have selected a spellcasting ability for your custom class, but you have not selected a number of spells.</p>';
                         ready = false;
                         showChoices(["class_button"]);
                         break;
@@ -2723,9 +2723,9 @@
             });
         } else {
             if(mancerdata["l1-class"] && mancerdata["l1-class"].values.race == "Rules:Classes" && !mancerdata["l1-class"].values.race_name) {
-                set["class_info"] = '<p class="sheet-warning sheet-needed">You need to pick a name for your custom class!</p>';
+                set["class_info"] = '<p class="warning needed">You need to pick a name for your custom class!</p>';
             } else {
-                set["class_info"] = '<p class="sheet-warning sheet-needed">You have not selected a class!</p>';
+                set["class_info"] = '<p class="warning needed">You have not selected a class!</p>';
             }
             ready = false;
             showChoices(["class_button"]);
@@ -2750,14 +2750,14 @@
             _.each(abilityList, function(ability) {
                 if(!mancerdata["l1-abilities"].values[ability.toLowerCase()]) {
                     x++;
-                    set["ability_info"] += '<p class="sheet-warning sheet-needed">You have not selected a score for your ' + ability.toLowerCase() + '!</p>';
+                    set["ability_info"] += '<p class="warning needed">You have not selected a score for your ' + ability.toLowerCase() + '!</p>';
                     ready = false;
                     showChoices(["abilities_button"]);
                 }
             });
-            if(x == 6) set["ability_info"] = '<p class="sheet-warning">You have not selected your ability scores!</p>';
+            if(x == 6) set["ability_info"] = '<p class="warning">You have not selected your ability scores!</p>';
         } else {
-            set["ability_info"] = '<p class="sheet-warning sheet-needed">You have not generated your ability scores!</p>';
+            set["ability_info"] = '<p class="warning needed">You have not generated your ability scores!</p>';
             ready = false;
             showChoices(["abilities_button"]);
         }
@@ -2766,27 +2766,27 @@
             set["background_info"] = '<p>You come from a ' + bgname + ' background.</p>';
             if(mancerdata["l1-background"].data.background && mancerdata["l1-background"].data.background["data-Background Choice Name"]) {
                 if(!mancerdata["l1-background"].values["background_detail_choice"]) {
-                    set["background_info"] += '<p class="sheet-warning">You haven\'t chosen your ';
+                    set["background_info"] += '<p class="warning">You haven\'t chosen your ';
                     set["background_info"] += mancerdata["l1-background"].data.background["data-Background Choice Name"] +'.</p>';
                 }
             }
             if(!mancerdata["l1-background"].values["background_personality_choice1"] && !mancerdata["l1-background"].values["background_personality_choice2"]) {
-                set["background_info"] += '<p class="sheet-warning">You haven\'t picked your personality traits.</p>';
+                set["background_info"] += '<p class="warning">You haven\'t picked your personality traits.</p>';
             } else if(!mancerdata["l1-background"].values["background_personality_choice1"] || !mancerdata["l1-background"].values["background_personality_choice2"]) {
-                set["background_info"] += '<p class="sheet-warning">You haven\'t picked one of your personality traits.</p>';
+                set["background_info"] += '<p class="warning">You haven\'t picked one of your personality traits.</p>';
             }
             if(!mancerdata["l1-background"].values["background_ideal_choice"]) {
-                set["background_info"] += '<p class="sheet-warning">You haven\'t chosen your ideal.</p>';
+                set["background_info"] += '<p class="warning">You haven\'t chosen your ideal.</p>';
             }
             if(!mancerdata["l1-background"].values["background_bond_choice"]) {
-                set["background_info"] += '<p class="sheet-warning">You haven\'t chosen your bond.</p>';
+                set["background_info"] += '<p class="warning">You haven\'t chosen your bond.</p>';
             }
             if(!mancerdata["l1-background"].values["background_flaw_choice"]) {
-                set["background_info"] += '<p class="sheet-warning">You haven\'t chosen your flaw.</p>';
+                set["background_info"] += '<p class="warning">You haven\'t chosen your flaw.</p>';
             }
             set["background_info"] += handleMissing("background");
         } else {
-            set["background_info"] = '<p class="sheet-warning sheet-needed">You have not selected a background!</p>';
+            set["background_info"] = '<p class="warning needed">You have not selected a background!</p>';
             ready = false;
             showChoices(["background_button"]);
         }
@@ -2813,7 +2813,7 @@
                 });
                 _.each(choices, function(number, type) {
                     if(number[0] - number[1] > 0) {
-                        set["equipment_info"] += '<p class="sheet-warning">Your ' + type + ' gives you ';
+                        set["equipment_info"] += '<p class="warning">Your ' + type + ' gives you ';
                         set["equipment_info"] += number[0] > 1 ? number[0] + " equipment choices" : "an equipment choice";
                         if(number[1] > 0) {
                             set["equipment_info"] += ', but you\'ve only chosen ' + number[1] + '!</p>';
@@ -2824,15 +2824,15 @@
                 });
             }
             if(mancerdata["l1-equipment"].values["equipment_type"] == "gold" && mancerdata["l1-equipment"].values["starting_gold"] == "0") {
-                set["equipment_info"] = '<p class="sheet-warning">You selected starting wealth for your equipment, but you don\'t have any gold yet!</p>';
+                set["equipment_info"] = '<p class="warning">You selected starting wealth for your equipment, but you don\'t have any gold yet!</p>';
             }
             if(mancerdata["l1-equipment"].values["equipment_class"] != getName("class", mancerdata, true) || (mancerdata["l1-equipment"].values["equipment_background"] != getName("background", mancerdata, true) && mancerdata["l1-equipment"].values["equipment_type"] != "gold")) {
-                set["equipment_info"] = '<p class="sheet-warning sheet-needed">Your equipment options have changed, you\'ll need to choose again.</p>';
+                set["equipment_info"] = '<p class="warning needed">Your equipment options have changed, you\'ll need to choose again.</p>';
                 ready = false;
                 showChoices(["equipment_button"]);
             }
         } else {
-            set["equipment_info"] = '<p class="sheet-warning sheet-needed">You have not selected any equipment!</p>';
+            set["equipment_info"] = '<p class="warning needed">You have not selected any equipment!</p>';
             ready = false;
             showChoices(["equipment_button"]);
         }
@@ -2856,7 +2856,7 @@
                         toDelete.push("race_level1_choice" + x);
                     }
                     if(raceSpells > 0 && mancerdata["l1-spells"].values.race_number > 0) {
-                        set["spell_info"] += '<p class="sheet-warning">Your racial spells were reset because your options have changed.</p>';
+                        set["spell_info"] += '<p class="warning">Your racial spells were reset because your options have changed.</p>';
                     }
                 }
                 if(prevClass != currentClass || mancerdata["l1-spells"].values.class_number > classSpells) {
@@ -2865,12 +2865,12 @@
                         toDelete.push("class_level1_choice" + x);
                     }
                     if(classSpells > 0 && mancerdata["l1-spells"].values.class_number > 0) {
-                        set["spell_info"] += '<p class="sheet-warning">Your class spells were reset because your options have changed.</p>';
+                        set["spell_info"] += '<p class="warning">Your class spells were reset because your options have changed.</p>';
                     }
                 }
             }
         } else if((raceSpells + classSpells) > 0) {
-            set["spell_info"] = '<p class="sheet-warning">You haven\'t selected your spells!</p>';
+            set["spell_info"] = '<p class="warning">You haven\'t selected your spells!</p>';
             spellsready = false;
             showChoices(["spells_button"]);
         } else {
@@ -2883,7 +2883,7 @@
                 set["feat_info"] = '<p>You\'ve selected the ' + mancerdata["l1-feat"].values.feat.split(":")[1] + ' feat.</p>';
                 set["feat_info"] += handleMissing("feat");
             } else {
-                set["feat_info"] = '<p class="sheet-warning">You have access to a feat, but you have not yet selected one!</p>';
+                set["feat_info"] = '<p class="warning">You have access to a feat, but you have not yet selected one!</p>';
             }
         } else {
             set["feat_info"] = '<p>As you exchange your novice notions of the world for experience, a feat may become within reach. Not today, however.</p>';
@@ -2897,7 +2897,7 @@
             set.ready_message += " from a " + bgname + " background, click \"Apply Changes.\"";
             showChoices(["apply_changes", "ready_text"]);
         } else {
-            set.ready_message = "Hold on there! You've missed some required fields, which have been marked with a <span class='sheet-needed'></span>.";
+            set.ready_message = "Hold on there! You've missed some required fields, which have been marked with a <span class='needed'></span>.";
         }
         //If you're ready to build your race class from a background background, click "Apply Changes."
         deleteCharmancerData([{"l1-spells":toDelete}], function() {
@@ -2921,7 +2921,7 @@
                 });
                 _.each(choices, function(number, type) {
                     if(number[1] > 0) {
-                        set["spell_info"] += '<p class="sheet-warning">You can choose ';
+                        set["spell_info"] += '<p class="warning">You can choose ';
                         set["spell_info"] += number[0] > 1 ? "up to " + number[0] + ' ' + type + 's' : "a " + type;
                         if(number[1] < number[0]) {
                             set["spell_info"] += ', but you\'ve only chosen ' + (number[0] - number[1]) + '!</p>';
@@ -2939,25 +2939,25 @@
     on("clicked:info_race", function(eventinfo) {
         var data = getCharmancerData();
         var race = data["l1-race"] && data["l1-race"].values.race ? data["l1-race"].values.race : "Rules:Races";
-        changeCompendiumPage("sheet-race-info", race);
+        changeCompendiumPage("race-info", race);
     });
 
     on("clicked:info_subrace", function(eventinfo) {
         var data = getCharmancerData();
         var subrace = data["l1-race"] && data["l1-race"].values.subrace ? data["l1-race"].values.subrace : data["l1-race"].values.race;
-        changeCompendiumPage("sheet-race-info", subrace);
+        changeCompendiumPage("race-info", subrace);
     });
 
     on("clicked:info_class", function(eventinfo) {
         var data = getCharmancerData();
         var oclass = data["l1-class"] && data["l1-class"].values.class ? data["l1-class"].values.class : "Rules:Classes";
-        changeCompendiumPage("sheet-class-info", oclass);
+        changeCompendiumPage("class-info", oclass);
     });
 
     on("clicked:info_subclass", function(eventinfo) {
         var data = getCharmancerData();
         var osubclass = data["l1-class"] && data["l1-class"].values.subclass ? data["l1-class"].values.subclass : data["l1-class"].values.class;
-        changeCompendiumPage("sheet-class-info", osubclass);
+        changeCompendiumPage("class-info", osubclass);
     });
 
     on("mancerfinish:l1-mancer", function(eventinfo) {

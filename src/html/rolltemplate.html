@@ -1,4 +1,4 @@
-    <rolltemplate class="sheet-rolltemplate-simple">
+    <rolltemplate class="rolltemplate-simple">
         <div class="licensedsheet-flag-{{licensedsheet}}"></div>
         <div class="container">
             <div class="result">
@@ -86,7 +86,7 @@
         </div>
     </rolltemplate>
 
-    <rolltemplate class="sheet-rolltemplate-atk">
+    <rolltemplate class="rolltemplate-atk">
         <div class="licensedsheet-flag-{{licensedsheet}}"></div>
         <div class="container">
             <div class="result">
@@ -207,7 +207,7 @@
         {{/desc}}
     </rolltemplate>
 
-    <rolltemplate class="sheet-rolltemplate-dmg">
+    <rolltemplate class="rolltemplate-dmg">
         <div class="licensedsheet-flag-{{licensedsheet}}"></div>
         {{#save}}
             {{#attack}}
@@ -307,7 +307,7 @@
         </div>
     </rolltemplate>
 
-    <rolltemplate class="sheet-rolltemplate-atkdmg">
+    <rolltemplate class="rolltemplate-atkdmg">
         <div class="licensedsheet-flag-{{licensedsheet}}"></div>
         {{#attack}}
             <div class="container atk">
@@ -619,7 +619,7 @@
         {{/damage}}
     </rolltemplate>
 
-    <rolltemplate class="sheet-rolltemplate-desc">
+    <rolltemplate class="rolltemplate-desc">
         <div class="licensedsheet-flag-{{licensedsheet}}"></div>
         <div class="desc info">
             <span>
@@ -628,32 +628,32 @@
         </div>
     </rolltemplate>
 
-    <rolltemplate class="sheet-rolltemplate-spell">
+    <rolltemplate class="rolltemplate-spell">
         <div class="licensedsheet-flag-{{licensedsheet}}"></div>
         <div class="container">
-            <div class="title row">
+            <div class="title cRow">
                 <span>{{name}}</span>{{#innate}}<span class="grey">, {{innate}}</span>{{/innate}}
             </div>
-            <div class="italics row">
+            <div class="italics cRow">
                 <span>{{level}}{{#ritual}} (<span data-i18n="ritual-l"></span>){{/ritual}}</span>
             </div>
             <div class="spacer"></div>
             {{#castingtime}}
-            <div class="row">
+            <div class="cRow">
                 <span class="bold" data-i18n="casting-time:">Casting Time:</span> <span>{{castingtime}}</span>
             </div>
             {{/castingtime}}
             {{#range}}
-            <div class="row">
+            <div class="cRow">
                 <span class="bold" data-i18n="range:">Range:</span> <span>{{range}}</span>
             </div>
             {{/range}}
             {{#target}}
-            <div class="row">
+            <div class="cRow">
                 <span class="bold" data-i18n="target:">Target:</span> <span>{{target}}</span>
             </div>
             {{/target}}
-            <div class="row">
+            <div class="cRow">
                 <span class="bold" data-i18n="components:">Components:</span>
                 <span>
                     {{#v}}V{{#s}}, {{/s}}{{^s}}{{#m}}, {{/m}}{{/s}}{{/v}}
@@ -662,53 +662,53 @@
                 </span>
             </div>
             {{#duration}}
-            <div class="row">
+            <div class="cRow">
                 <span class="bold" data-i18n="duration:">Duration:</span> <span>{{#concentration}}<span data-i18n="concentration">Concentration</span> {{/concentration}}{{duration}}</span>
             </div>
             {{/duration}}
             <div class="spacer"></div>
             {{#description}}
-            <div class="row">
+            <div class="cRow">
                 <span class="description">{{description}}</span>
             </div>
             {{/description}}
             {{#athigherlevels}}
-            <div class="row">
+            <div class="cRow">
                 <span class="bold italics" data-i18n="at-higher-lvl">At Higher Levels</span>. <span class="description">{{athigherlevels}}</span>
             </div>
             {{/athigherlevels}}
         </div>
     </rolltemplate>
 
-    <rolltemplate class="sheet-rolltemplate-traits">
+    <rolltemplate class="rolltemplate-traits">
         <div class="licensedsheet-flag-{{licensedsheet}}"></div>
-        <div class="row header">
+        <div class="cRow header">
             <span>{{name}}</span>
         </div>
         {{#source}}
-            <div class="row subheader">
+            <div class="cRow subheader">
                 <span class="italics">{{#charname}}{{charname}} {{/charname}}{{source}}</span>
             </div>
         {{/source}}
         {{#description}}
-            <div class="row">
+            <div class="cRow">
                 <span class="desc">{{description}}</span>
             </div>
         {{/description}}
     </rolltemplate>
 
-    <rolltemplate class="sheet-rolltemplate-npc">
+    <rolltemplate class="rolltemplate-npc">
         <div class="licensedsheet-flag-{{licensedsheet}}"></div>
-        <div class="row header">
+        <div class="cRow header">
             <span>{{rname}}</span>
         </div>
         {{#name}}
-            <div class="row subheader">
+            <div class="cRow subheader">
                 <span class="italics">{{name}}</span>
             </div>
         {{/name}}
         <div class="arrow-right"></div>
-        <div class="row">
+        <div class="cRow">
             {{#normal}}
                 <span class="italics">{{type}}: </span><span>{{r1}}</span>
             {{/normal}}
@@ -740,9 +740,9 @@
         </div>
     </rolltemplate>
 
-    <rolltemplate class="sheet-rolltemplate-npcatk">
+    <rolltemplate class="rolltemplate-npcatk">
         <div class="licensedsheet-flag-{{licensedsheet}}"></div>
-        <div class="row header">
+        <div class="cRow header">
             {{#normal}}
                 {{#rollWasCrit() r1}}{{rnamec}}{{/rollWasCrit() r1}}
                 {{#^rollWasCrit() r1}}{{rname}}{{/^rollWasCrit() r1}}
@@ -767,12 +767,12 @@
             {{/disadvantage}}
         </div>
         {{#name}}
-            <div class="row subheader">
+            <div class="cRow subheader">
                 <span class="italics">{{name}}</span>
             </div>
         {{/name}}
         <div class="arrow-right"></div>
-        <div class="row">
+        <div class="cRow">
             {{#normal}}
                 {{#rollWasCrit() r1}}<span class="italics">{{typec}}: </span>{{/rollWasCrit() r1}}
                 {{#^rollWasCrit() r1}}<span class="italics">{{type}}: </span>{{/^rollWasCrit() r1}}
@@ -825,13 +825,13 @@
             {{/disadvantage}}
         </div>
         {{#description}}
-            <div class="row">
+            <div class="cRow">
                 <span class="desc">{{description}}</span>
             </div>
         {{/description}}
     </rolltemplate>
 
-    <rolltemplate class="sheet-rolltemplate-npcdmg">
+    <rolltemplate class="rolltemplate-npcdmg">
         <div class="licensedsheet-flag-{{licensedsheet}}"></div>
         <div class="container dmgcontainer damagetemplate">
             <span class="italics">Damage: </span>
@@ -847,20 +847,20 @@
         </div>
     </rolltemplate>
 
-    <rolltemplate class="sheet-rolltemplate-npcaction">
+    <rolltemplate class="rolltemplate-npcaction">
         <div class="licensedsheet-flag-{{licensedsheet}}"></div>
         <div class="container">
-            <div class="row header">
+            <div class="cRow header">
                 <span>{{rname}}</span>
             </div>
             {{#name}}
-                <div class="row subheader">
+                <div class="cRow subheader">
                     <span class="italics">{{name}}</span>
                 </div>
             {{/name}}
             <div class="arrow-right"></div>
             {{#attack}}
-                <div class="row">
+                <div class="cRow">
                     {{#normal}}
                         <span class="italics">Attack: </span><span>{{r1}}</span>
                     {{/normal}}
@@ -945,10 +945,10 @@
             {{/damage}}
     </rolltemplate>
 
-    <rolltemplate class="sheet-rolltemplate-mancerroll">
+    <rolltemplate class="rolltemplate-mancerroll">
         <div class="licensedsheet-flag-{{licensedsheet}}"></div>
         <div class="container">
-            <div class="row header">
+            <div class="cRow header">
                 <span>
                     {{title}}
                     {{#c1}}
@@ -957,42 +957,42 @@
                 </span>
             </div>
             {{#r1}}
-                <div class="row">
+                <div class="cRow">
                     <span class="desc">Roll 1: </span>
                     <span class="result">{{r1}}</span>
                 </div>
             {{/r1}}
             {{#r2}}
-                <div class="row">
+                <div class="cRow">
                     <span class="desc">Roll 2: </span>
                     <span class="result">{{r2}}</span>
                 </div>
             {{/r2}}
             {{#r3}}
-                <div class="row">
+                <div class="cRow">
                     <span class="desc">Roll 3: </span>
                     <span class="result">{{r3}}</span>
                 </div>
             {{/r3}}
             {{#r4}}
-                <div class="row">
+                <div class="cRow">
                     <span class="desc">Roll 4: </span>
                     <span class="result">{{r4}}</span>
                 </div>
             {{/r4}}
             {{#r5}}
-                <div class="row">
+                <div class="cRow">
                     <span class="desc">Roll 5: </span>
                     <span class="result">{{r5}}</span>
                 </div>
             {{/r5}}
             {{#r6}}
-                <div class="row">
+                <div class="cRow">
                     <span class="desc">Roll 6: </span>
                     <span class="result">{{r6}}</span>
                 </div>
             {{/r6}}
-            <div class="row">
+            <div class="cRow">
                 <span class="desc">
                     {{#rollTotal() c1 1}}{{option1}}{{/rollTotal() c1 1}}
                     {{#rollTotal() c1 2}}{{option2}}{{/rollTotal() c1 2}}
@@ -1019,10 +1019,10 @@
         </div>
     </rolltemplate>
 
-    <rolltemplate class="sheet-rolltemplate-mancerhproll">
+    <rolltemplate class="rolltemplate-mancerhproll">
         <div class="licensedsheet-flag-{{licensedsheet}}"></div>
         <div class="container">
-            <div class="row header">
+            <div class="cRow header">
                 <span>
                     {{title}}
                     {{#c1}}
@@ -1031,107 +1031,107 @@
                 </span>
             </div>
             {{#a1}}
-                <div class="row">
+                <div class="cRow">
                 <span class="desc">Average: </span><span class="result">{{a1}}</span>
                 </div>
             {{/a1}}
             {{#r1}}
-                <div class="row">
+                <div class="cRow">
                 <span class="desc">Roll 1: </span><span class="result">{{r1}}</span>
                 </div>
             {{/r1}}
             {{#r2}}
-                <div class="row">
+                <div class="cRow">
                     <span class="desc">Roll 2: </span><span class="result">{{r2}}</span>
                 </div>
             {{/r2}}
             {{#r3}}
-                <div class="row">
+                <div class="cRow">
                     <span class="desc">Roll 3: </span><span class="result">{{r3}}</span>
                 </div>
             {{/r3}}
             {{#r4}}
-                <div class="row">
+                <div class="cRow">
                     <span class="desc">Roll 4: </span><span class="result">{{r4}}</span>
                 </div>
             {{/r4}}
             {{#r5}}
-                <div class="row">
+                <div class="cRow">
                     <span class="desc">Roll 5: </span><span class="result">{{r5}}</span>
                 </div>
             {{/r5}}
             {{#r6}}
-                <div class="row">
+                <div class="cRow">
                     <span class="desc">Roll 6: </span><span class="result">{{r6}}</span>
                 </div>
             {{/r6}}
             {{#r7}}
-                <div class="row">
+                <div class="cRow">
                     <span class="desc">Roll 7: </span><span class="result">{{r7}}</span>
                 </div>
             {{/r7}}
             {{#r8}}
-                <div class="row">
+                <div class="cRow">
                     <span class="desc">Roll 8: </span><span class="result">{{r8}}</span>
                 </div>
             {{/r8}}
             {{#r9}}
-                <div class="row">
+                <div class="cRow">
                     <span class="desc">Roll 9: </span><span class="result">{{r9}}</span>
                 </div>
             {{/r9}}
             {{#r10}}
-                <div class="row">
+                <div class="cRow">
                     <span class="desc">Roll 10: </span><span class="result">{{r10}}</span>
                 </div>
             {{/r10}}
             {{#r11}}
-                <div class="row">
+                <div class="cRow">
                     <span class="desc">Roll 11: </span><span class="result">{{r11}}</span>
                 </div>
             {{/r11}}
                         {{#r12}}
-                <div class="row">
+                <div class="cRow">
                     <span class="desc">Roll 12: </span><span class="result">{{r12}}</span>
                 </div>
             {{/r12}}
             {{#r13}}
-                <div class="row">
+                <div class="cRow">
                     <span class="desc">Roll 13: </span><span class="result">{{r13}}</span>
                 </div>
             {{/r13}}
             {{#r14}}
-                <div class="row">
+                <div class="cRow">
                     <span class="desc">Roll 14: </span><span class="result">{{r14}}</span>
                 </div>
             {{/r14}}
             {{#r15}}
-                <div class="row">
+                <div class="cRow">
                     <span class="desc">Roll 15: </span><span class="result">{{r15}}</span>
                 </div>
             {{/r15}}
             {{#r16}}
-                <div class="row">
+                <div class="cRow">
                     <span class="desc">Roll 16: </span><span class="result">{{r16}}</span>
                 </div>
             {{/r16}}
             {{#r17}}
-                <div class="row">
+                <div class="cRow">
                     <span class="desc">Roll 17: </span><span class="result">{{r17}}</span>
                 </div>
             {{/r17}}
             {{#r18}}
-                <div class="row">
+                <div class="cRow">
                     <span class="desc">Roll 18: </span><span class="result">{{r18}}</span>
                 </div>
             {{/r18}}
             {{#r19}}
-                <div class="row">
+                <div class="cRow">
                     <span class="desc">Roll 19: </span><span class="result">{{r19}}</span>
                 </div>
             {{/r19}}
             {{#r20}}
-                <div class="row">
+                <div class="cRow">
                     <span class="desc">Roll 20: </span><span class="result">{{r20}}</span>
                 </div>
             {{/r20}}
