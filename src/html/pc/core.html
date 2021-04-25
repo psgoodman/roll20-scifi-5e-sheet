@@ -466,14 +466,14 @@
                     <input type="number" name="attr_hit_dice" title="@{hit_dice}" style="margin-bottom: -6px;">
                     <button type="roll" name="roll_hit_dice" value="@{wtype}&{template:simple} {{rname=^{hit-dice-u}}} {{mod=D@{hitdie_final}+[[@{constitution_mod}[CON]]]}} {{r1=[[1d@{hitdie_final}+[[@{constitution_mod}]][CON]]]}} {{normal=1}} @{charname_output} {{licensedsheet=@{licensedsheet}}}" data-i18n="hit-dice-u">HIT DICE</button>
                 </div>
-                <div class="subcontainer" style="float: right;">
-                    <div class="cRow-container">
+                <div class="subcontainer">
+                    <div class="saves-container">
                         <span class="label" data-i18n="successes-u">SUCCESSES</span>
-                        <input type="checkbox" name="attr_deathsave_succ1">
-                        <input type="checkbox" name="attr_deathsave_succ2">
-                        <input type="checkbox" name="attr_deathsave_succ3">
+                        <input class="success" type="checkbox" name="attr_deathsave_succ1">
+                        <input class="success" type="checkbox" name="attr_deathsave_succ2">
+                        <input class="success" type="checkbox" name="attr_deathsave_succ3">
                     </div>
-                    <div class="cRow-container">
+                    <div class="saves-container">
                         <span class="label" data-i18n="failures-u">FAILURES</span>
                         <input type="checkbox" name="attr_deathsave_fail1">
                         <input type="checkbox" name="attr_deathsave_fail2">

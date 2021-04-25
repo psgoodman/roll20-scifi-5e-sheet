@@ -1,8 +1,8 @@
 /* Roll20 Official public Repository */
 //$externalImgsPath: "https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/5th%20Edition%20OGL%20by%20Roll20/images/";
 
-/* My Own Repository for Testing */
-$externalImgsPath: "https://raw.githubusercontent.com/mperes/Images-for-Roll20-5E-images/master/";
+/* My Own Repository */
+$externalImgsPath: "https://raw.githubusercontent.com/thagorn/roll20-5e-sheet/main/images/";
 $imgParameters: "?sanitize=true";
 
 .pc,
@@ -795,7 +795,7 @@ button[type=roll] * {
     border-radius: 5px;
 }
 
-.hp input
+.maincontainer .hp input
 {
     font-size: 30px;
 }
@@ -805,7 +805,7 @@ button[type=roll] * {
     font-size: 20px;
 }
 
-.hp input[type="number"]
+.maincontainer .hp input[type="number"]
 {
     width: 100%;
     padding-right: 10px;
@@ -874,15 +874,15 @@ button[type=roll] * {
     font-weight: bold;
 }
 
-.hdice-dsaves-container .cRow-container{
-    float: right;
-    margin-right: 5px;
-    margin-top: 5px;
-}
-
-.hdice-dsaves-container .cRow-container span {
-    display: inline-block;
-    width: inherit;
+.hdice-dsaves-container .saves-container{
+    display: flex;
+    justify-content: flex-end;
+    margin: 2px;
+    .label {
+        width: inherit;
+        flex-grow: 1;
+        text-align: left;
+    }
 }
 
 .money {
@@ -2896,10 +2896,12 @@ By Miguel
     line-height: 16px;
 }
 
-.npc button[type=roll]
-{
-    width: auto;
-    white-space: nowrap;
+.maincontainer {
+    .npc button[type=roll]
+    {
+        width: auto;
+        white-space: nowrap;
+    }
 }
 
 .npc .saving button[type=roll] span,
@@ -5767,8 +5769,7 @@ input.licensedsheet[value="1"] + div.licensecontainer {
         );
     }
 
-    .container:not(.npc) .subcontainer .cRow-container input[type="checkbox"] {
-        margin: 0px -2px;
+    .container:not(.npc) .subcontainer .saves-container input[type="checkbox"] {
         border-radius: 50%;
         border: 2px solid #000 !important;
         width: 1em;
@@ -5780,8 +5781,13 @@ input.licensedsheet[value="1"] + div.licensecontainer {
         cursor: pointer;
     }
 
-    .container:not(.npc) .subcontainer .cRow-container input[type="checkbox"]:checked {
-        background-color: #EC2127;
+    .container:not(.npc) .subcontainer .saves-container {
+        input[type="checkbox"]:checked {
+            background-color: #EC2127;
+        }
+        input[type="checkbox"].success:checked {
+            background-color: #27EC21;
+        }
     }
 
     .container:not(.npc) .subcontainer .top input{
@@ -5906,7 +5912,7 @@ input.licensedsheet[value="1"] + div.licensecontainer {
         width: 15px;
         height: 20px;
         text-indent: -40px;
-        font-size: 6px;
+        font-size: 8px;
         line-height: 20px;
         vertical-align: middle;
         background-image: url("#{$externalImgsPath}licensedsheet/copper.png");

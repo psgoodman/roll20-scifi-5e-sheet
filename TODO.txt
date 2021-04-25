@@ -1,0 +1,18 @@
+* Fix roll templates
+* Fix spell checkboxes
+* Fix charactermancer
+* Fix Bio & info section?
+
+* Add defaults
+    * Roll Queries: Advantage Toggle
+    * [use-licensed-sheet-style]
+    * Show Exhaustion tracking on
+
+* Clean up CSS sheet
+    * Variables for colors and such
+    * Split into multiple files
+    * Using nesting correctly
+
+* data-i18n-error
+
+* NPC skills - autoresize or content editable span
