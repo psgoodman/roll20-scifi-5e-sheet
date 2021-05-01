@@ -610,7 +610,6 @@ button[type=roll] * {
 }
 
 .saving-throw input[type=checkbox],
-.skill input[type=checkbox]
 {
     margin-left: 5px;
 }
@@ -628,7 +627,7 @@ button[type=roll] * {
     font-size: 12px;
     display: inline-block;
     text-align: center;
-    min-width: 21px;
+    min-width: 18px;
 }
 
 .maincontainer {
@@ -639,7 +638,6 @@ button[type=roll] * {
         overflow: hidden;
         word-wrap: break-word;
         white-space: nowrap;
-        text-overflow: ellipsis;
         text-align: left;
     }
 }
@@ -4878,8 +4876,9 @@ input.licensedsheet[value="1"] + div.licensecontainer {
     .container:not(.npc) .skills-container {
         position: relative;
         box-sizing: border-box;
-        padding: 5px 5px 15px;
+        padding: 5px 5px 15px 0px;
         border: 10px solid black;
+        border-left-width: 5px;
         border-image-source: url("#{$externalImgsPath}licensedsheet/saves.svg#{$imgParameters}");
         border-image-slice: 65 10;
         border-image-width: auto;

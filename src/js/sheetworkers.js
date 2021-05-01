@@ -200,7 +200,7 @@
 
     ['acrobatics','animal_handling','arcana','athletics','deception','history','insight','intimidation','investigation',
     'medicine','nature','perception','performance','persuasion','religion','sleight_of_hand','stealth','survival'].forEach(attr => {
-        on(`change:${attr}_prof change:${attr}_type change:${attr}_flat`, function(eventinfo) {
+        on(`change:${attr}_prof change:${attr}_prof_3 change:${attr}_prof_2 change:${attr}_type change:${attr}_flat`, function(eventinfo) {
             if(eventinfo.sourceType === "sheetworker") {return;};
             update_skills([`${attr}`]);
         });
@@ -888,6 +888,8 @@
         _.each(skills_array, function(s) {
             if(skill_parent[s] && attrs_to_get.indexOf(skill_parent[s]) === -1) {attrs_to_get.push(skill_parent[s] + "_mod")};
             attrs_to_get.push(s + "_prof");
+            attrs_to_get.push(s + "_prof_2");
+            attrs_to_get.push(s + "_prof_3");
             attrs_to_get.push(s + "_type");
             attrs_to_get.push(s + "_flat");
         });
@@ -900,9 +902,12 @@
 
             getAttrs(attrs_to_get, function(v) {
                 console.log("UPDATING SKILLS");
+                var profBonus = !isNaN(v["pb"]) ? parseInt(v["pb"], 10) : 0;
                 _.each(skills_array, function(s) {
                     var attr_mod = v[skill_parent[s] + "_mod"] ? parseInt(v[skill_parent[s] + "_mod"], 10) : 0;
-                    var prof = v[s + "_prof"] != 0 && !isNaN(v["pb"]) ? parseInt(v["pb"], 10) : 0;
+                    var prof = v[s + "_prof"] != 0 && profBonus;
+                    var prof2 = v[s + "_prof_2"] != 0 && profBonus;
+                    var prof3 = v[s + "_prof_3"] != 0 && profBonus;
                     var flat = v[s + "_flat"] && !isNaN(parseInt(v[s + "_flat"], 10)) ? parseInt(v[s + "_flat"], 10) : 0;
                     var type = v[s + "_type"] && !isNaN(parseInt(v[s + "_type"], 10)) ? parseInt(v[s + "_type"], 10) : 1;
                     var jack = v["jack_of_all_trades"] && v["jack_of_all_trades"] != 0 && v["jack"] ? v["jack"] : 0;
@@ -927,6 +932,7 @@
                     });
 
                     var total = attr_mod + flat + item_bonus;
+                    var profSum = prof + prof2 + prof3;
 
                     if(v["pb_type"] && v["pb_type"] === "die") {
                         if(v[s + "_prof"] != 0) {
@@ -938,10 +944,13 @@
                         };
                     }
                     else {
-                        if(v[s + "_prof"] != 0) {
-                            total = total + (prof * type);
+                        if(profSum != 0) {
+                            total += profSum;
+                            if (type === 2) {
+                              total += profBonus;
+                            }
                         }
-                        else if(v[s + "_prof"] == 0 && jack != 0) {
+                        else if(profSum == 0 && jack != 0) {
                             total = total + parseInt(jack, 10);
                         };
 
