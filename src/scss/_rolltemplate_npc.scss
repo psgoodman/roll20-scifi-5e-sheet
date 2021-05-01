@@ -1,0 +1,209 @@
+.sheet-rolltemplate-npc div[class|="sheet-licensedsheet-flag"],
+.sheet-rolltemplate-npcatk div[class|="sheet-licensedsheet-flag"],
+.sheet-rolltemplate-npcdmg div[class|="sheet-licensedsheet-flag"],
+.sheet-rolltemplate-npcaction div[class|="sheet-licensedsheet-flag"]
+{
+    display: none;
+}
+
+.sheet-rolltemplate-npc div.sheet-licensedsheet-flag-1 ~ div.sheet-arrow-right,
+.sheet-rolltemplate-npcaction div.sheet-licensedsheet-flag-1 ~ div.sheet-arrow-right,
+.sheet-rolltemplate-npcatk div.sheet-licensedsheet-flag-1 ~ div.sheet-arrow-right,
+.sheet-rolltemplate-npcdmg div.sheet-licensedsheet-flag-1 ~ div.sheet-arrow-right {
+    border: none;
+    border-top: 0.25em solid transparent;
+    border-bottom: 0.25em solid transparent;
+    border-left: 14em solid rgb(126, 45, 64);
+}
+
+.sheet-rolltemplate-npc,
+.sheet-rolltemplate-npcaction .sheet-container,
+.sheet-rolltemplate-npcatk,
+.sheet-rolltemplate-npcdmg,
+{
+    width: 188px;
+    border: 1px solid;
+    background-color: #ffffff;
+    padding: 5px;
+}
+
+.sheet-rolltemplate-npcaction .sheet-container.sheet-dmgcontainer
+{
+    margin-top: 5px;
+}
+
+.sheet-rolltemplate-npcdmg {
+    margin-top: -8px;
+}
+
+.sheet-rolltemplate-npc .sheet-header,
+.sheet-rolltemplate-npcaction .sheet-header,
+.sheet-rolltemplate-npcatk .sheet-header,
+.sheet-rolltemplate-npcdmg .sheet-header
+{
+    color: rgb(126, 45, 64);
+    font-size: 18px;
+    text-align: left;
+    font-family: "Times New Roman", Times, serif;
+    font-variant: small-caps;
+}
+
+.sheet-rolltemplate-traits .sheet-header {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 16px;
+    text-transform: capitalize;
+    font-variant: small-caps;
+    font-weight: bold;
+    color: rgb(126, 45, 64);
+}
+
+.sheet-rolltemplate-npc .sheet-italics,
+.sheet-rolltemplate-npcaction .sheet-italics,
+.sheet-rolltemplate-npcatk .sheet-italics,
+.sheet-rolltemplate-npcdmg .sheet-italics,
+.sheet-rolltemplate-traits .sheet-italics
+{
+    font-style: italic;
+}
+
+.sheet-rolltemplate-npc .sheet-subheader,
+.sheet-rolltemplate-npcaction .sheet-subheader,
+.sheet-rolltemplate-npcatk .sheet-subheader,
+.sheet-rolltemplate-npcdmg .sheet-subheader
+{
+    line-height: 13px;
+    margin-top: -3px;
+}
+
+.sheet-rolltemplate-traits .sheet-subheader
+{
+    font-style: italic;
+    color: #A0A0A0;
+    margin-top: -5px;
+}
+
+.sheet-rolltemplate-npc .sheet-subheader span,
+.sheet-rolltemplate-npcaction .sheet-subheader span,
+.sheet-rolltemplate-npcatk .sheet-subheader span,
+.sheet-rolltemplate-npcdmg .sheet-subheader span
+{
+    font-size: 11px;
+    line-height: 11px;
+}
+
+.sheet-rolltemplate-traits .sheet-subheader span {
+    font-weight: normal;
+    font-size: 10px;
+    text-align: left;
+    line-height: 16px;
+
+}
+
+.sheet-rolltemplate-traits .sheet-desc {
+    font-weight: normal;
+    font-size: 12px;
+    text-align: left;
+    line-height: 16px;
+}
+
+
+.sheet-rolltemplate-npc .sheet-arrow-rightold,
+.sheet-rolltemplate-npcaction .sheet-arrow-rightold,
+.sheet-rolltemplate-npcatk .sheet-arrow-rightold,
+.sheet-rolltemplate-npcdmg .sheet-arrow-rightold
+{
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    border-left: 195px solid rgb(126, 45, 64);
+}
+
+.sheet-rolltemplate-npc .sheet-arrow-right,
+.sheet-rolltemplate-npcaction .sheet-arrow-right,
+.sheet-rolltemplate-npcatk .sheet-arrow-right,
+.sheet-rolltemplate-npcdmg .sheet-arrow-right
+{
+    border: 1px solid rgb(126, 45, 64);
+    margin-bottom: 2px;
+    margin-top: 2px;
+}
+
+.sheet-rolltemplate-npc .sheet-inlinerollresult,
+.sheet-rolltemplate-npcaction .sheet-inlinerollresult,
+.sheet-rolltemplate-npcatk .sheet-inlinerollresult,
+.sheet-rolltemplate-npcdmg .sheet-inlinerollresult,
+.sheet-rolltemplate-traits .sheet-inlinerollresult
+{
+    background-color: #ffffff;
+    border: none;
+}
+
+.sheet-rolltemplate-npc .sheet-inlinerollresult.sheet-fullcrit,
+.sheet-rolltemplate-npcaction .sheet-inlinerollresult.sheet-fullcrit,
+.sheet-rolltemplate-npcatk .sheet-inlinerollresult.sheet-fullcrit,
+.sheet-rolltemplate-npcdmg .sheet-inlinerollresult.sheet-fullcrit
+{
+    color: #3FB315;
+    border: none;
+}
+
+.sheet-rolltemplate-npc .sheet-inlinerollresult.sheet-fullfail,
+.sheet-rolltemplate-npcaction .sheet-inlinerollresult.sheet-fullfail,
+.sheet-rolltemplate-npcatk .sheet-inlinerollresult.sheet-fullfail,
+.sheet-rolltemplate-npcdmg .sheet-inlinerollresult.sheet-fullfail
+{
+    color: #B31515;
+    border: none;
+}
+
+.sheet-rolltemplate-npc .sheet-inlinerollresult.sheet-importantroll,
+.sheet-rolltemplate-npcaction .sheet-inlinerollresult.sheet-importantroll,
+.sheet-rolltemplate-npcatk .sheet-inlinerollresult.sheet-importantroll,
+.sheet-rolltemplate-npcdmg .sheet-inlinerollresult.sheet-importantroll
+{
+    color: #4A57ED;
+    border: none;
+}
+
+.sheet-rolltemplate-npcatk a[href^="~"] {
+    background-color: transparent;
+    padding: 0px;
+    color: black;
+    border: 0px;
+}
+
+.sheet-rolltemplate-npcatk .sheet-header a[href^="~"] {
+    color: rgb(126, 45, 64);
+}
+
+.sheet-rolltemplate-npcatk a[href^="~"]:hover {
+    color: #EC2127;
+}
+
+.sheet-rolltemplate-npc .sheet-grey,
+.sheet-rolltemplate-npc .sheet-grey .sheet-inlinerollresult.sheet-fullcrit,
+.sheet-rolltemplate-npc .sheet-grey .sheet-inlinerollresult.sheet-fullfail,
+.sheet-rolltemplate-npc .sheet-grey .sheet-inlinerollresult.sheet-importantroll,
+.sheet-rolltemplate-npcaction .sheet-grey,
+.sheet-rolltemplate-npcaction .sheet-grey .sheet-inlinerollresult.sheet-fullcrit,
+.sheet-rolltemplate-npcaction .sheet-grey .sheet-inlinerollresult.sheet-fullfail,
+.sheet-rolltemplate-npcaction .sheet-grey .sheet-inlinerollresult.sheet-importantroll,
+.sheet-rolltemplate-npcatk .sheet-grey,
+.sheet-rolltemplate-npcatk .sheet-grey .sheet-inlinerollresult.sheet-fullcrit,
+.sheet-rolltemplate-npcatk .sheet-grey .sheet-inlinerollresult.sheet-fullfail,
+.sheet-rolltemplate-npcatk .sheet-grey .sheet-inlinerollresult.sheet-importantroll
+{
+    color: #A0A0A0;
+    border: 0px;
+    font-weight: normal;
+}
+
+.sheet-rolltemplate-npcaction .sheet-damagetemplate .sheet-inlinerollresult.sheet-fullcrit,
+.sheet-rolltemplate-npcaction .sheet-damagetemplate .sheet-inlinerollresult.sheet-fullfail,
+.sheet-rolltemplate-npcaction .sheet-damagetemplate .sheet-inlinerollresult.sheet-importantroll,
+.sheet-rolltemplate-npcdmg .sheet-damagetemplate .sheet-inlinerollresult.sheet-fullcrit,
+.sheet-rolltemplate-npcdmg .sheet-damagetemplate .sheet-inlinerollresult.sheet-fullfail,
+.sheet-rolltemplate-npcdmg .sheet-damagetemplate .sheet-inlinerollresult.sheet-importantroll,
+{
+    color: black;
+    border: 0px;
+}

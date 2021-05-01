@@ -1,4 +1,3 @@
-* Fix roll templates
 * Fix spell checkboxes
 * Fix charactermancer
 * Fix Bio & info section?
