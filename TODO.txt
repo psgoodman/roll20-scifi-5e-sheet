@@ -1,4 +1,4 @@
-* Fix charactermancer
+* Fix charactermancer (currently display:none in pc/options.html)
 * Fix Bio & info section?
 
 * Add defaults
