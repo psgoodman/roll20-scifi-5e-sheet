@@ -120,6 +120,10 @@ input[type=radio].tab-button:checked + span {
 div.maincontainer.monsters .npc_toggle[value="1"] ~ .advantagetoggle {
     top: -10px;
     left: 390px;
+
+    &.whispertoggle {
+        left: 550px;
+    }
 }
 
 .npc_toggle[value="1"] ~ .advantagetoggle.whispertoggle {
