@@ -117,7 +117,7 @@ input[type=radio].tab-button:checked + span {
     width: 55px;
 }
 
-.npc_toggle[value="1"] ~ .advantagetoggle {
+div.maincontainer.monsters .npc_toggle[value="1"] ~ .advantagetoggle {
     top: -10px;
     left: 390px;
 }
@@ -177,9 +177,7 @@ input[type=radio].tab-button:checked + span {
 
 .npc_toggle[value="1"] ~ .advantagetoggle input[type=radio] + span {
     text-transform: lowercase;
-    font-variant: small-caps;
     font-weight: normal;
-    background: transparent;
     border: none;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -194,7 +192,8 @@ input[type=radio].tab-button:checked + span {
 
 .npc_toggle[value="1"] ~ .advantagetoggle input[type=radio]:checked + span {
     font-weight: bold;
-    color: rgb(126, 45, 64);
+    background-color: rgb(126, 45, 64);
+    color: white;
 }
 
 .page {
