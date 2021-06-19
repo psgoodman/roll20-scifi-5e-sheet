@@ -436,7 +436,6 @@
     text-align: center;
     font-style: italic;
     margin-top: -2px;
-    min-height: 17px;
 }
 
 /* Obsolete Template */
@@ -511,7 +510,7 @@ By Miguel
     display: block;
     font-size: 10px;
     font-weight: normal;
-    margin-top: -5px;
+    margin-top: 0;
 }
 
 .sheet-rolltemplate-atk .sheet-sublabel span,
@@ -667,4 +666,8 @@ By Miguel
     font-size: 11px;
     font-weight: normal;
     color: #A0A0A0;
+}
+
+.sheet-rolltemplate-npcdmg .sheet-container .inlinerollresult {
+    margin-right: 5px;
 }
