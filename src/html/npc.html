@@ -76,32 +76,22 @@
         </div>
         <div class="cRow skills-list" data-i18n-list="skills-list">
             <div class="col">
-                <div class="cRow" data-i18n-list-item="acrobatics">
-                    <span data-i18n="acrobatics-u">ACROBATICS</span>
-                    <input class="num" type="text" name="attr_npc_acrobatics_base" placeholder="0">
-                </div>
-                <div class="cRow" data-i18n-list-item="animal_handling">
-                    <span data-i18n="animal_handling-u">ANIMAL HANDLING</span>
-                    <input class="num" type="text" name="attr_npc_animal_handling_base" placeholder="0">
-                </div>
-                <div class="cRow" data-i18n-list-item="arcana">
-                    <span data-i18n="arcana-u">ARCANA</span>
-                    <input class="num" type="text" name="attr_npc_arcana_base" placeholder="0">
-                </div>
                 <div class="cRow" data-i18n-list-item="athletics">
                     <span data-i18n="athletics-u">ATHLETICS</span>
                     <input class="num" type="text" name="attr_npc_athletics_base" placeholder="0">
+                </div>
+                <div class="cRow" data-i18n-list-item="computers">
+                    <span data-i18n="computers-u">COMPUTERS</span>
+                    <input class="num" type="text" name="attr_npc_arcana_base" placeholder="0">
+                </div>
+                <div class="cRow" data-i18n-list-item="culture">
+                    <span data-i18n="culture-u">CULTURE</span>
+                    <input class="num" type="text" name="attr_npc_history_base" placeholder="0">
                 </div>
                 <div class="cRow" data-i18n-list-item="deception">
                     <span data-i18n="deception-u">DECEPTION</span>
                     <input class="num" type="text" name="attr_npc_deception_base" placeholder="0">
                 </div>
-                <div class="cRow" data-i18n-list-item="history">
-                    <span data-i18n="history-u">HISTORY</span>
-                    <input class="num" type="text" name="attr_npc_history_base" placeholder="0">
-                </div>
-            </div>
-            <div class="col" data-i18n-list-sublist>
                 <div class="cRow" data-i18n-list-item="insight">
                     <span data-i18n="insight-u">INSIGHT</span>
                     <input class="num" type="text" name="attr_npc_insight_base" placeholder="0">
@@ -110,24 +100,24 @@
                     <span data-i18n="intimidation-u">INTIMIDATION</span>
                     <input class="num" type="text" name="attr_npc_intimidation_base" placeholder="0">
                 </div>
+            </div>
+            <div class="col" data-i18n-list-sublist>
                 <div class="cRow" data-i18n-list-item="investigation">
                     <span data-i18n="investigation-u">INVESTIGATION</span>
                     <input class="num" type="text" name="attr_npc_investigation_base" placeholder="0">
+                </div>
+                <div class="cRow" data-i18n-list-item="mechanics">
+                    <span data-i18n="mechanics-u">MECHANICS</span>
+                    <input class="num" type="text" name="attr_npc_animal_handling_base" placeholder="0">
                 </div>
                 <div class="cRow" data-i18n-list-item="medicine">
                     <span data-i18n="medicine-u">MEDICINE</span>
                     <input class="num" type="text" name="attr_npc_medicine_base" placeholder="0">
                 </div>
-                <div class="cRow" data-i18n-list-item="nature">
-                    <span data-i18n="nature-u">NATURE</span>
-                    <input class="num" type="text" name="attr_npc_nature_base" placeholder="0">
-                </div>
                 <div class="cRow" data-i18n-list-item="perception">
                     <span data-i18n="perception-u">PERCEPTION</span>
                     <input class="num" type="text" name="attr_npc_perception_base" placeholder="0">
                 </div>
-            </div>
-            <div class="col" data-i18n-list-sublist>
                 <div class="cRow" data-i18n-list-item="performance">
                     <span data-i18n="performance-u">PERFORMANCE</span>
                     <input class="num" type="text" name="attr_npc_performance_base" placeholder="0">
@@ -136,8 +126,14 @@
                     <span data-i18n="persuasion-u">PERSUASION</span>
                     <input class="num" type="text" name="attr_npc_persuasion_base" placeholder="0">
                 </div>
-                <div class="cRow" data-i18n-list-item="religion">
-                    <span data-i18n="religion-u">RELIGION</span>
+            </div>
+            <div class="col" data-i18n-list-sublist>
+                <div class="cRow" data-i18n-list-item="piloting">
+                    <span data-i18n="piloting-u">PILOTING</span>
+                    <input class="num" type="text" name="attr_npc_nature_base" placeholder="0">
+                </div>
+                <div class="cRow" data-i18n-list-item="science">
+                    <span data-i18n="science-u">SCIENCE</span>
                     <input class="num" type="text" name="attr_npc_religion_base" placeholder="0">
                 </div>
                 <div class="cRow" data-i18n-list-item="sleight_of_hand">
@@ -412,27 +408,6 @@
         <input class="flag" type="hidden" name="attr_npc_skills_flag" value="">
         <div class="cRow skills skills-list red" data-i18n-list="skills-list">
             <span class="bold" data-i18n="skills">Skills</span>
-            <span data-i18n-list-item="acrobatics">
-                <input class="flag" type="hidden" name="attr_npc_acrobatics_flag" value="0">
-                <button type="roll" name="roll_npc_acrobatics" value="@{wtype}&{template:npc} @{npc_name_flag} {{rname=^{acrobatics}}} {{mod=@{npc_acrobatics}}} {{r1=[[@{d20}+@{npc_acrobatics}]]}} @{rtype}+@{npc_acrobatics}]]}} {{type=Skill}}">
-                    <span data-i18n="acrobatics">Acrobatics</span>
-                    <span class="stat" name="attr_npc_acrobatics"></span>
-                </button>
-            </span>
-            <span data-i18n-list-item="animal_handling">
-                <input class="flag" type="hidden" name="attr_npc_animal_handling_flag" value="0">
-                <button type="roll" name="roll_npc_animal_handling" value="@{wtype}&{template:npc} @{npc_name_flag} {{rname=^{animal_handling}}} {{mod=@{npc_animal_handling}}} {{r1=[[@{d20}+@{npc_animal_handling}]]}} @{rtype}+@{npc_animal_handling}]]}} {{type=Skill}}">
-                    <span data-i18n="animal_handling">Animal Handling</span>
-                    <span class="stat" name="attr_npc_animal_handling"></span>
-                </button>
-            </span>
-            <span data-i18n-list-item="arcana">
-                <input class="flag" type="hidden" name="attr_npc_arcana_flag" value="0">
-                <button type="roll" name="roll_npc_arcana" value="@{wtype}&{template:npc} @{npc_name_flag} {{rname=^{arcana}}} {{mod=@{npc_arcana}}} {{r1=[[@{d20}+@{npc_arcana}]]}} @{rtype}+@{npc_arcana}]]}} {{type=Skill}}">
-                    <span data-i18n="arcana">Arcana</span>
-                    <span class="stat" name="attr_npc_arcana"></span>
-                </button>
-            </span>
             <span data-i18n-list-item="athletics">
                 <input class="flag" type="hidden" name="attr_npc_athletics_flag" value="0">
                 <button type="roll" name="roll_npc_athletics" value="@{wtype}&{template:npc} @{npc_name_flag} {{rname=^{athletics}}} {{mod=@{npc_athletics}}} {{r1=[[@{d20}+@{npc_athletics}]]}} @{rtype}+@{npc_athletics}]]}} {{type=Skill}}">
@@ -440,18 +415,25 @@
                     <span class="stat" name="attr_npc_athletics"></span>
                 </button>
             </span>
+            <span data-i18n-list-item="computers">
+                <input class="flag" type="hidden" name="attr_npc_arcana_flag" value="0">
+                <button type="roll" name="roll_npc_arcana" value="@{wtype}&{template:npc} @{npc_name_flag} {{rname=^{arcana}}} {{mod=@{npc_arcana}}} {{r1=[[@{d20}+@{npc_arcana}]]}} @{rtype}+@{npc_arcana}]]}} {{type=Skill}}">
+                    <span data-i18n="computers">Computers</span>
+                    <span class="stat" name="attr_npc_arcana"></span>
+                </button>
+            </span>
+            <span data-i18n-list-item="culture">
+                <input class="flag" type="hidden" name="attr_npc_history_flag" value="0">
+                <button type="roll" name="roll_npc_history" value="@{wtype}&{template:npc} @{npc_name_flag} {{rname=^{history}}} {{mod=@{npc_history}}} {{r1=[[@{d20}+@{npc_history}]]}} @{rtype}+@{npc_history}]]}} {{type=Skill}}">
+                    <span data-i18n="culture">Culture</span>
+                    <span class="stat" name="attr_npc_history"></span>
+                </button>
+            </span>
             <span data-i18n-list-item="deception">
                 <input class="flag" type="hidden" name="attr_npc_deception_flag" value="0">
                 <button type="roll" name="roll_npc_deception" value="@{wtype}&{template:npc} @{npc_name_flag} {{rname=^{deception}}} {{mod=@{npc_deception}}} {{r1=[[@{d20}+@{npc_deception}]]}} @{rtype}+@{npc_deception}]]}} {{type=Skill}}">
                     <span data-i18n="deception">Deception</span>
                     <span class="stat" name="attr_npc_deception"></span>
-                </button>
-            </span>
-            <span data-i18n-list-item="history">
-                <input class="flag" type="hidden" name="attr_npc_history_flag" value="0">
-                <button type="roll" name="roll_npc_history" value="@{wtype}&{template:npc} @{npc_name_flag} {{rname=^{history}}} {{mod=@{npc_history}}} {{r1=[[@{d20}+@{npc_history}]]}} @{rtype}+@{npc_history}]]}} {{type=Skill}}">
-                    <span data-i18n="history">History</span>
-                    <span class="stat" name="attr_npc_history"></span>
                 </button>
             </span>
             <span data-i18n-list-item="insight">
@@ -475,18 +457,18 @@
                     <span class="stat" name="attr_npc_investigation"></span>
                 </button>
             </span>
+            <span data-i18n-list-item="mechanics">
+                <input class="flag" type="hidden" name="attr_npc_animal_handling_flag" value="0">
+                <button type="roll" name="roll_npc_animal_handling" value="@{wtype}&{template:npc} @{npc_name_flag} {{rname=^{animal_handling}}} {{mod=@{npc_animal_handling}}} {{r1=[[@{d20}+@{npc_animal_handling}]]}} @{rtype}+@{npc_animal_handling}]]}} {{type=Skill}}">
+                    <span data-i18n="mechanics">Mechanics</span>
+                    <span class="stat" name="attr_npc_animal_handling"></span>
+                </button>
+            </span>
             <span data-i18n-list-item="medicine">
                 <input class="flag" type="hidden" name="attr_npc_medicine_flag" value="0">
                 <button type="roll" name="roll_npc_medicine" value="@{wtype}&{template:npc} @{npc_name_flag} {{rname=^{medicine}}} {{mod=@{npc_medicine}}} {{r1=[[@{d20}+@{npc_medicine}]]}} @{rtype}+@{npc_medicine}]]}} {{type=Skill}}">
                     <span data-i18n="medicine">Medicine</span>
                     <span class="stat" name="attr_npc_medicine"></span>
-                </button>
-            </span>
-            <span data-i18n-list-item="nature">
-                <input class="flag" type="hidden" name="attr_npc_nature_flag" value="0">
-                <button type="roll" name="roll_npc_nature" value="@{wtype}&{template:npc} @{npc_name_flag} {{rname=^{nature}}} {{mod=@{npc_nature}}} {{r1=[[@{d20}+@{npc_nature}]]}} @{rtype}+@{npc_nature}]]}} {{type=Skill}}">
-                    <span data-i18n="nature">Nature</span>
-                    <span class="stat" name="attr_npc_nature"></span>
                 </button>
             </span>
             <span data-i18n-list-item="perception">
@@ -510,10 +492,17 @@
                     <span class="stat" name="attr_npc_persuasion"></span>
                 </button>
             </span>
-            <span data-i18n-list-item="religion">
+            <span data-i18n-list-item="piloting">
+                <input class="flag" type="hidden" name="attr_npc_nature_flag" value="0">
+                <button type="roll" name="roll_npc_nature" value="@{wtype}&{template:npc} @{npc_name_flag} {{rname=^{nature}}} {{mod=@{npc_nature}}} {{r1=[[@{d20}+@{npc_nature}]]}} @{rtype}+@{npc_nature}]]}} {{type=Skill}}">
+                    <span data-i18n="piloting">Piloting</span>
+                    <span class="stat" name="attr_npc_nature"></span>
+                </button>
+            </span>
+            <span data-i18n-list-item="science">
                 <input class="flag" type="hidden" name="attr_npc_religion_flag" value="0">
                 <button type="roll" name="roll_npc_religion" value="@{wtype}&{template:npc} @{npc_name_flag} {{rname=^{religion}}} {{mod=@{npc_religion}}} {{r1=[[@{d20}+@{npc_religion}]]}} @{rtype}+@{npc_religion}]]}} {{type=Skill}}">
-                    <span data-i18n="religion">Religion</span>
+                    <span data-i18n="science">Science</span>
                     <span class="stat" name="attr_npc_religion"></span>
                 </button>
             </span>
