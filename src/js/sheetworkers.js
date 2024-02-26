@@ -162,15 +162,15 @@
                     update_skills(["athletics"]);
                     break;
                 case "dexterity":
-                    update_skills(["acrobatics", "sleight_of_hand", "stealth"]);
+                    update_skills(["sleight_of_hand", "stealth", "piloting"]);
                     update_ac();
                     update_initiative();
                     break;
                 case "intelligence":
-                    update_skills(["arcana", "history", "investigation", "nature", "religion"]);
+                    update_skills(["computers", "culture", "investigation", "mechanics", "science"]);
                     break;
                 case "wisdom":
-                    update_skills(["animal_handling", "insight", "medicine", "perception", "survival"]);
+                    update_skills(["insight", "medicine", "perception", "survival"]);
                     break;
                 case "charisma":
                     update_skills(["deception", "intimidation", "performance", "persuasion"]);
@@ -198,8 +198,8 @@
         update_save("death");
     });
 
-    ['acrobatics','animal_handling','arcana','athletics','deception','history','insight','intimidation','investigation',
-    'medicine','nature','perception','performance','persuasion','religion','sleight_of_hand','stealth','survival'].forEach(attr => {
+    ['piloting','computers','athletics','deception','culture','insight','intimidation','investigation',
+    'medicine','mechanics','perception','performance','persuasion','science','sleight_of_hand','stealth','survival'].forEach(attr => {
         on(`change:${attr}_prof change:${attr}_prof_3 change:${attr}_prof_2 change:${attr}_type change:${attr}_flat`, function(eventinfo) {
             if(eventinfo.sourceType === "sheetworker") {return;};
             update_skills([`${attr}`]);
@@ -542,7 +542,7 @@
         update_npc_saves();
     });
 
-    on("change:npc_acrobatics_base change:npc_animal_handling_base change:npc_arcana_base change:npc_athletics_base change:npc_deception_base change:npc_history_base change:npc_insight_base change:npc_intimidation_base change:npc_investigation_base change:npc_medicine_base change:npc_nature_base change:npc_perception_base change:npc_performance_base change:npc_persuasion_base change:npc_religion_base change:npc_sleight_of_hand_base change:npc_stealth_base change:npc_survival_base", function(eventinfo) {
+    on("change:npc_mechanics_base change:npc_computers_base change:npc_athletics_base change:npc_deception_base change:npc_culture_base change:npc_insight_base change:npc_intimidation_base change:npc_investigation_base change:npc_medicine_base change:npc_piloting_base change:npc_perception_base change:npc_performance_base change:npc_persuasion_base change:npc_science_base change:npc_sleight_of_hand_base change:npc_stealth_base change:npc_survival_base", function(eventinfo) {
         update_npc_skills();
     });
 
@@ -872,11 +872,11 @@
 
     var update_all_ability_checks = function(){
         update_initiative();
-        update_skills(["athletics", "acrobatics", "sleight_of_hand", "stealth", "arcana", "history", "investigation", "nature", "religion", "animal_handling", "insight", "medicine", "perception", "survival","deception", "intimidation", "performance", "persuasion"]);
+        update_skills(["athletics", "sleight_of_hand", "stealth", "computers", "culture", "investigation", "piloting", "science", "mechanics", "insight", "medicine", "perception", "survival","deception", "intimidation", "performance", "persuasion"]);
     };
 
     var update_skills = function (skills_array) {
-        var skill_parent = {athletics: "strength", acrobatics: "dexterity", sleight_of_hand: "dexterity", stealth: "dexterity", arcana: "intelligence", history: "intelligence", investigation: "intelligence", nature: "intelligence", religion: "intelligence", animal_handling: "wisdom", insight: "wisdom", medicine: "wisdom", perception: "wisdom", survival: "wisdom", deception: "charisma", intimidation: "charisma", performance: "charisma", persuasion: "charisma"};
+        var skill_parent = {athletics: "strength", sleight_of_hand: "dexterity", stealth: "dexterity", computers: "intelligence", culture: "intelligence", investigation: "intelligence", piloting: "dexterity", science: "intelligence", mechanics: "intelligence", insight: "wisdom", medicine: "wisdom", perception: "wisdom", survival: "wisdom", deception: "charisma", intimidation: "charisma", performance: "charisma", persuasion: "charisma"};
         var attrs_to_get = ["pb","pb_type","jack_of_all_trades","jack"];
         var update = {};
         var callbacks = [];
@@ -1500,7 +1500,7 @@
             update["npc_senses"] = senses;
 
             //SAVES & SKILLS
-            const npcSavesSkills = ["str_save", "dex_save", "con_save", "int_save", "wis_save", "cha_save",'acrobatics','animal_handling','arcana','athletics','deception','history','insight','intimidation','investigation','medicine','nature','perception','performance','persuasion','religion','sleight_of_hand','stealth','survival'];
+            const npcSavesSkills = ["str_save", "dex_save", "con_save", "int_save", "wis_save", "cha_save",'mechanics','computers','athletics','deception','culture','insight','intimidation','investigation','medicine','piloting','perception','performance','persuasion','science','sleight_of_hand','stealth','survival'];
             npcSavesSkills.forEach((attr) => {
                 update[`npc_${attr}_base`] = "";
             });
@@ -2276,21 +2276,20 @@
             if(mod.indexOf("wisdom save") > -1) {update_save("wisdom");} else if(mod.indexOf("wisdom") > -1) {update_attr("wisdom");};
             if(mod.indexOf("charisma save") > -1) {update_save("charisma");} else if(mod.indexOf("charisma") > -1) {update_attr("charisma");};
             if(mod.indexOf("ability checks") > -1) {update_all_ability_checks();};
-            if(mod.indexOf("acrobatics") > -1) {update_skills(["acrobatics"]);};
-            if(mod.indexOf("animal handling") > -1) {update_skills(["animal_handling"]);};
-            if(mod.indexOf("arcana") > -1) {update_skills(["arcana"]);};
+            if(mod.indexOf("piloting") > -1) {update_skills(["piloting"]);};
+            if(mod.indexOf("computers") > -1) {update_skills(["computers"]);};
             if(mod.indexOf("athletics") > -1) {update_skills(["athletics"]);};
             if(mod.indexOf("deception") > -1) {update_skills(["deception"]);};
-            if(mod.indexOf("history") > -1) {update_skills(["history"]);};
+            if(mod.indexOf("culture") > -1) {update_skills(["culture"]);};
             if(mod.indexOf("insight") > -1) {update_skills(["insight"]);};
             if(mod.indexOf("intimidation") > -1) {update_skills(["intimidation"]);};
             if(mod.indexOf("investigation") > -1) {update_skills(["investigation"]);};
             if(mod.indexOf("medicine") > -1) {update_skills(["medicine"]);};
-            if(mod.indexOf("nature") > -1) {update_skills(["nature"]);};
+            if(mod.indexOf("mechanics") > -1) {update_skills(["mechanics"]);};
             if(mod.indexOf("perception") > -1) {update_skills(["perception"]);};
             if(mod.indexOf("performance") > -1) {update_skills(["performance"]);};
             if(mod.indexOf("persuasion") > -1) {update_skills(["persuasion"]);};
-            if(mod.indexOf("religion") > -1) {update_skills(["religion"]);};
+            if(mod.indexOf("science") > -1) {update_skills(["science"]);};
             if(mod.indexOf("sleight of hand") > -1) {update_skills(["sleight_of_hand"]);};
             if(mod.indexOf("stealth") > -1) {update_skills(["stealth"]);};
             if(mod.indexOf("survival") > -1) {update_skills(["survival"]);};
@@ -3615,7 +3614,7 @@
             callbacks.push( function() {update_initiative();} );
             callbacks.push( function() {update_tool("all");} );
             callbacks.push( function() {update_all_saves();} );
-            callbacks.push( function() {update_skills(["athletics", "acrobatics", "sleight_of_hand", "stealth", "arcana", "history", "investigation", "nature", "religion", "animal_handling", "insight", "medicine", "perception", "survival","deception", "intimidation", "performance", "persuasion"]);} );
+            callbacks.push( function() {update_skills(["athletics", "sleight_of_hand", "stealth", "computers", "culture", "investigation", "piloting", "science", "mechanics", "insight", "medicine", "perception", "survival", "deception", "intimidation", "performance", "persuasion"]);} );
 
             setAttrs(update, {silent: true}, function() {callbacks.forEach(function(callback) {callback(); })} );
         });
@@ -3774,7 +3773,7 @@
     };
 
     const update_npc_skills = () => {
-        const list = ["npc_acrobatics_base","npc_animal_handling_base","npc_arcana_base","npc_athletics_base","npc_deception_base","npc_history_base","npc_insight_base","npc_intimidation_base","npc_investigation_base","npc_medicine_base","npc_nature_base","npc_perception_base","npc_performance_base","npc_persuasion_base","npc_religion_base","npc_sleight_of_hand_base","npc_stealth_base","npc_survival_base"];
+        const list = ["npc_mechanics_base","npc_computers_base","npc_athletics_base","npc_deception_base","npc_culture_base","npc_insight_base","npc_intimidation_base","npc_investigation_base","npc_medicine_base","npc_piloting_base","npc_perception_base","npc_performance_base","npc_persuasion_base","npc_science_base","npc_sleight_of_hand_base","npc_stealth_base","npc_survival_base"];
         const type = "skills";
         update_npc_lists(list, type);
     };

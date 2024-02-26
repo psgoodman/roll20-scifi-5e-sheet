@@ -49,10 +49,10 @@
     }
 
     var upgrade_to_2_0 = function(doneupdating) {
-        getAttrs(["npc","strength","dexterity","constitution","intelligence","wisdom","charisma","strength_base","dexterity_base","constitution_base","intelligence_base","wisdom_base","charisma_base","deathsavemod","death_save_mod","npc_str_save","npc_dex_save","npc_con_save","npc_int_save","npc_wis_save","npc_cha_save","npc_str_save_base","npc_dex_save_base","npc_con_save_base","npc_int_save_base","npc_wis_save_base","npc_cha_save_base","npc_acrobatics_base", "npc_animal_handling_base", "npc_arcana_base", "npc_athletics_base", "npc_deception_base", "npc_history_base", "npc_insight_base", "npc_intimidation_base", "npc_investigation_base", "npc_medicine_base", "npc_nature_base", "npc_perception_base", "npc_performance_base", "npc_persuasion_base", "npc_religion_base", "npc_sleight_of_hand_base", "npc_stealth_base", "npc_survival_base", "npc_acrobatics", "npc_animal_handling", "npc_arcana", "npc_athletics", "npc_deception", "npc_history", "npc_insight", "npc_intimidation", "npc_investigation", "npc_medicine", "npc_nature", "npc_perception", "npc_performance", "npc_persuasion", "npc_religion", "npc_sleight_of_hand", "npc_stealth", "npc_survival"], function(v) {
+        getAttrs(["npc","strength","dexterity","constitution","intelligence","wisdom","charisma","strength_base","dexterity_base","constitution_base","intelligence_base","wisdom_base","charisma_base","deathsavemod","death_save_mod","npc_str_save","npc_dex_save","npc_con_save","npc_int_save","npc_wis_save","npc_cha_save","npc_str_save_base","npc_dex_save_base","npc_con_save_base","npc_int_save_base","npc_wis_save_base","npc_cha_save_base", "npc_mechanics_base","npc_computers_base","npc_athletics_base","npc_deception_base","npc_culture_base","npc_insight_base","npc_intimidation_base","npc_investigation_base","npc_medicine_base","npc_piloting_base","npc_perception_base","npc_performance_base","npc_persuasion_base","npc_science_base","npc_sleight_of_hand_base","npc_stealth_base","npc_survival_base", "npc_mechanics", "npc_computers", "npc_athletics", "npc_deception", "npc_culture", "npc_insight", "npc_intimidation", "npc_investigation", "npc_medicine", "npc_piloting", "npc_perception", "npc_performance", "npc_persuasion", "npc_science", "npc_sleight_of_hand", "npc_stealth", "npc_survival"], function(v) {
             var update = {};
             var stats = ["strength","dexterity","constitution","intelligence","wisdom","charisma"];
-            var npc_stats = ["npc_str_save","npc_dex_save","npc_con_save","npc_int_save","npc_wis_save","npc_cha_save","npc_acrobatics", "npc_animal_handling", "npc_arcana", "npc_athletics", "npc_deception", "npc_history", "npc_insight", "npc_intimidation", "npc_investigation", "npc_medicine", "npc_nature", "npc_perception", "npc_performance", "npc_persuasion", "npc_religion", "npc_sleight_of_hand", "npc_stealth", "npc_survival"];
+            var npc_stats = ["npc_str_save","npc_dex_save","npc_con_save","npc_int_save","npc_wis_save","npc_cha_save","npc_mechanics", "npc_computers", "npc_athletics", "npc_deception", "npc_culture", "npc_insight", "npc_intimidation", "npc_investigation", "npc_medicine", "npc_piloting", "npc_perception", "npc_performance", "npc_persuasion", "npc_science", "npc_sleight_of_hand", "npc_stealth", "npc_survival"];
             _.each(stats, function(attr) {
                 if(v[attr] && v[attr] != "10" && v[attr + "_base"] == "10") {
                     update[attr + "_base"] = v[attr];
@@ -92,7 +92,7 @@
                     update_mod("wisdom");
                     update_mod("charisma");
                     update_all_saves();
-                    update_skills(["athletics", "acrobatics", "sleight_of_hand", "stealth", "arcana", "history", "investigation", "nature", "religion", "animal_handling", "insight", "medicine", "perception", "survival","deception", "intimidation", "performance", "persuasion"]);
+                    update_skills(["athletics", "sleight_of_hand", "stealth", "computers", "culture", "investigation", "piloting", "science", "mechanics", "insight", "medicine", "perception", "survival", "deception", "intimidation", "performance", "persuasion"]);
                     update_tool("all")
                     update_attacks("all");
                     update_pb();
